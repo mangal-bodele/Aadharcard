@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Person</title>
+{% endblock %}
+{% block content %}
+    <table class="m-auto border border-3 p-2 mt-3 col-8 text-center table-bordered">
+        <thead>
+            <tr class="cls">
+                <th>ID</th>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>MOBILE</th>
+                <th>AADHAR NO</th>
+                <th>DATE of BIRTH</th>
+                <th>GENDER</th>
+                <th colspan="2">ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aadharcard in aadharcards %}
+                <tr>
+                    <td>{{ aadharcard.id }}</td>
+                    <td>{{ aadharcard.fname }}</td>
+                    <td>{{ aadharcard.lname }}</td>
+                    <td>{{ aadharcard.mobile_number }}</td>
+                    <td>{{ aadharcard.aadhar_no }}</td>
+                    <td>{{ aadharcard.dob }}</td>
+                    <td>{{ aadharcard.gender }}</td>
+                    <td>
+                        <a href="{% url 'update_url' aadharcard.id %}">
+                            <button>Update</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_url' aadharcard.id %}">
+                            <button>Delete</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
